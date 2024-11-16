@@ -1,0 +1,19 @@
+.test{
+    color: var(--foreground);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    h1{
+        font-size: 60px;
+    }
+    .buttons{
+        font-size: 40px;
+        display: flex;
+        justify-content: space-around;
+        svg{ 
+            &:hover{
+            color: red;
+            }
+        }
+    }
+}
