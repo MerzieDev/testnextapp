@@ -1,15 +1,22 @@
 import admin from "firebase-admin";
 
-var serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN!);
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
-
-if (!admin.apps.length) {
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  });
+let serviceAccount;
+if(process.env.FIREBASE_ADMIN){
+    serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN);
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount)
+      });
+      
+      if (!admin.apps.length) {
+        admin.initializeApp({
+          credential: admin.credential.cert(serviceAccount),
+        });
+      }
+}
+else{
+    
 }
 
-export const verifyIdToken = (token: any) => admin.auth().verifyIdToken(token);
+export const verifyIdToken = (token: string) => admin.auth().verifyIdToken(token);
+
+
