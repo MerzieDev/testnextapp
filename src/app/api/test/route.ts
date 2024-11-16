@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-export async function GET(request: NextRequest, response: NextResponse) {
+export async function GET(req: NextRequest) {
+    console.log(req);
+    
     return NextResponse.json({message: "Success"}, {status: 200})
 }
